@@ -3,7 +3,7 @@
 **Network:** Arc Testnet  
 **Chain ID:** 52858  
 **RPC:** https://testnet.arc.network  
-**Explorer:** https://testnet.arcscan.net  
+**Explorer:** https://testnet.arcscan.app  
 **USDC:** 0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d
 
 ---
@@ -60,7 +60,7 @@ Network Name: Arc Testnet
 RPC URL: https://testnet.arc.network
 Chain ID: 52858
 Currency Symbol: ETH
-Block Explorer: https://testnet.arcscan.net
+Block Explorer: https://testnet.arcscan.app
 ```
 
 ### 3. Compile Contract
@@ -91,7 +91,7 @@ Deploying AgentSubscriptions contract...
 ✅ Confirmed!
 
 🔗 View on Explorer:
-https://testnet.arcscan.net/address/0x...
+https://testnet.arcscan.app/address/0x...
 ✅ Deployment complete! 🎉
 ```
 
@@ -205,7 +205,7 @@ After deployment:
 ## Resources
 
 - **Arc Network:** https://www.arc.network
-- **Arc Testnet Explorer:** https://testnet.arcscan.net
+- **Arc Testnet Explorer:** https://testnet.arcscan.app
 - **Circle Docs:** https://developers.circle.com
 - **Arc Discord:** (Check Circle Discord for Arc channels)
 - **USDC Contract:** 0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d

@@ -250,10 +250,10 @@ npx hardhat coverage
 
 ### Arc Testnet (Circle's L1 - PRIMARY)
 ```
-Contract: TBD (to be deployed)
+Contract: 0xe3740beE2F2F3a45C72380722643D152a3dF4A07
 USDC: 0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d
 Chain ID: 52858
-Explorer: https://testnet.arcscan.net
+Explorer: https://testnet.arcscan.app
 ```
 
 ### Base Sepolia Testnet (Backup)
