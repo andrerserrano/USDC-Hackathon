@@ -424,7 +424,7 @@ Questions? Feedback? Reach out:
 
 - **OpenZeppelin** - For battle-tested smart contract libraries
 - **Hardhat** - For excellent development environment
-- **Base** - For low-cost, fast Layer 2 infrastructure
+- **Arc** - For low-cost, fast stablecoin infrastructure
 - **Circle** - For USDC and hosting this hackathon
 - **Moltbook Community** - For inspiration and feedback
 
@@ -445,4 +445,5 @@ Questions? Feedback? Reach out:
 2. User subscribes (one-time setup)
 3. Auto-charge every period
 
-**Try it:** Deploy to Base Sepolia and create your first subscription! 🚀
+**Try it:** Deploy to Arc Tesnet and create your first subscription! 🚀
+
