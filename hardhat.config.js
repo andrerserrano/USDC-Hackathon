@@ -1,9 +1,8 @@
-import "@nomicfoundation/hardhat-toolbox";
-import "@nomicfoundation/hardhat-verify";
-import dotenv from "dotenv";
-dotenv.config();
+require("@nomicfoundation/hardhat-verify");
+require("dotenv").config();
 
-export default {
+/** @type import('hardhat/config').HardhatUserConfig */
+module.exports = {
   solidity: {
     version: "0.8.20",
     settings: {
@@ -14,16 +13,19 @@ export default {
     },
   },
   networks: {
+    // Arc Testnet (Circle's L1 - PRIMARY)
     arcTestnet: {
-      url: process.env.ARC_TESTNET_RPC || "https://rpc.testnet.arc.network",
+      url: process.env.ARC_TESTNET_RPC || "https://testnet-rpc.arc.network",
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
       chainId: 5042002,
     },
+    // Base Sepolia (backup)
     baseSepolia: {
       url: process.env.BASE_SEPOLIA_RPC || "https://sepolia.base.org",
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
       chainId: 84532,
     },
+    // Base Mainnet (future)
     base: {
       url: process.env.BASE_RPC || "https://mainnet.base.org",
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
@@ -41,8 +43,24 @@ export default {
         network: "arcTestnet",
         chainId: 5042002,
         urls: {
-          apiURL: "https://testnet.arcscan.net/api",
-          browserURL: "https://testnet.arcscan.net"
+          apiURL: "https://testnet.arcscan.app/api",
+          browserURL: "https://testnet.arcscan.app"
+        }
+      },
+      {
+        network: "baseSepolia",
+        chainId: 84532,
+        urls: {
+          apiURL: "https://api-sepolia.basescan.org/api",
+          browserURL: "https://sepolia.basescan.org"
+        }
+      },
+      {
+        network: "base",
+        chainId: 8453,
+        urls: {
+          apiURL: "https://api.basescan.org/api",
+          browserURL: "https://basescan.org"
         }
       }
     ]

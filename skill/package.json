@@ -1,0 +1,24 @@
+{
+  "name": "agent-subscriptions-skill",
+  "version": "1.0.0",
+  "description": "OpenClaw skill for recurring USDC subscriptions on Arc Testnet",
+  "main": "scripts/subscriptions.js",
+  "scripts": {
+    "status": "node scripts/subscriptions.js status",
+    "list": "node scripts/subscriptions.js list",
+    "my": "node scripts/subscriptions.js my"
+  },
+  "keywords": [
+    "openclaw",
+    "skill",
+    "usdc",
+    "subscriptions",
+    "arc",
+    "ethereum"
+  ],
+  "author": "Timmy (@TimmyOnBase)",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.9.0"
+  }
+}
