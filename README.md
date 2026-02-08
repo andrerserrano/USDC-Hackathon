@@ -4,7 +4,10 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Solidity](https://img.shields.io/badge/solidity-^0.8.20-green.svg)
-![Network](https://img.shields.io/badge/network-Base-blue.svg)
+![Network](https://img.shields.io/badge/network-Arc%20Testnet-blue.svg)
+
+> 🎯 **Repository:** [github.com/andrerserrano/USDC-Hackathon](https://github.com/andrerserrano/USDC-Hackathon)  
+> 📜 **Contract:** [0xe3740beE2F2F3a45C72380722643D152a3dF4A07](https://testnet.arcscan.app/address/0xe3740beE2F2F3a45C72380722643D152a3dF4A07)
 
 ---
 
@@ -94,8 +97,8 @@ Agents can't sell recurring services today. Every payment is manual and one-time
 
 ```bash
 # Clone repository
-git clone https://github.com/YOUR_USERNAME/agent-subscriptions
-cd agent-subscriptions
+git clone https://github.com/andrerserrano/USDC-Hackathon.git
+cd USDC-Hackathon
 
 # Install dependencies
 npm install
@@ -392,12 +395,13 @@ MIT License - see [LICENSE](./LICENSE) file for details
 ## 👥 Team
 
 **Built by:**
-- **Timmy** (@TimmyOnBase) - AI Agent Entrepreneur
-- **Andre** - Human Partner & Crypto Expert
+- **Timmy** ([@TimmyOnBase](https://www.moltbook.com/u/TimmyOnBase)) - AI Agent Entrepreneur
+- **Andre** ([@andrerserrano](https://github.com/andrerserrano)) - Human Partner & Crypto Expert
 
-**For:** USDC Hackathon on Moltbook  
+**For:** [USDC Hackathon on Moltbook](https://www.moltbook.com/c/usdc-hackathon)  
 **Track:** OpenClaw Skill  
-**Date:** February 2026
+**Date:** February 2026  
+**Submission:** [View on Moltbook](https://www.moltbook.com/post/703acec9-a480-41da-a7cb-5969edb09373)
 
 ---
 
@@ -405,9 +409,9 @@ MIT License - see [LICENSE](./LICENSE) file for details
 
 - **Moltbook:** https://www.moltbook.com/u/TimmyOnBase
 - **X/Twitter:** [@Timmy_On_Base](https://x.com/Timmy_On_Base)
-- **GitHub:** TBD (pending deployment)
-- **Contract (testnet):** TBD (pending deployment)
-- **Hackathon Post:** TBD (pending submission)
+- **GitHub:** https://github.com/andrerserrano/USDC-Hackathon
+- **Contract (Arc Testnet):** 0xe3740beE2F2F3a45C72380722643D152a3dF4A07
+- **Hackathon Submission:** https://www.moltbook.com/post/703acec9-a480-41da-a7cb-5969edb09373
 
 ---
 
@@ -415,8 +419,8 @@ MIT License - see [LICENSE](./LICENSE) file for details
 
 Questions? Feedback? Reach out:
 - **Moltbook:** @TimmyOnBase
-- **Issues:** GitHub Issues (after repo creation)
-- **Hackathon:** Comment on submission post
+- **GitHub Issues:** https://github.com/andrerserrano/USDC-Hackathon/issues
+- **Hackathon:** Comment on [submission post](https://www.moltbook.com/post/703acec9-a480-41da-a7cb-5969edb09373)
 
 ---
 
