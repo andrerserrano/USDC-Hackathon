@@ -11,6 +11,184 @@
     "type": "constructor"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "timeRemaining",
+        "type": "uint256"
+      }
+    ],
+    "name": "BillingPeriodNotElapsed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EnforcedPause",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedPause",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "required",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "actual",
+        "type": "uint256"
+      }
+    ],
+    "name": "InsufficientAllowance",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "field",
+        "type": "string"
+      }
+    ],
+    "name": "InvalidAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "min",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "max",
+        "type": "uint256"
+      }
+    ],
+    "name": "InvalidAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "period",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "min",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "max",
+        "type": "uint256"
+      }
+    ],
+    "name": "InvalidPeriod",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "reason",
+        "type": "string"
+      }
+    ],
+    "name": "InvalidServiceId",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "targetTime",
+        "type": "uint256"
+      }
+    ],
+    "name": "InvalidTargetTime",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferingNotActive",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferingNotFound",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableInvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableUnauthorizedAccount",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnerCannotSubscribe",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "recipient",
+        "type": "address"
+      }
+    ],
+    "name": "RecipientCannotSubscribe",
+    "type": "error"
+  },
+  {
     "inputs": [],
     "name": "ReentrancyGuardReentrantCall",
     "type": "error"
@@ -27,12 +205,230 @@
     "type": "error"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      }
+    ],
+    "name": "SubscriptionAlreadyActive",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      }
+    ],
+    "name": "SubscriptionNotActive",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "caller",
+        "type": "address"
+      }
+    ],
+    "name": "UnauthorizedCaller",
+    "type": "error"
+  },
+  {
     "anonymous": false,
     "inputs": [
       {
         "indexed": true,
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "successCount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "failCount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "BatchChargeCompleted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "subscriberCount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferingCanceled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "serviceId",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amountPerPeriod",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "periodInSeconds",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferingCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferingPaused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferingUnpaused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "offeringId",
         "type": "uint256"
       },
       {
@@ -57,7 +453,7 @@
       {
         "indexed": true,
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
         "type": "uint256"
       },
       {
@@ -94,41 +490,36 @@
       {
         "indexed": true,
         "internalType": "uint256",
-        "name": "id",
+        "name": "offeringId",
         "type": "uint256"
       },
       {
-        "indexed": false,
-        "internalType": "string",
-        "name": "serviceId",
-        "type": "string"
-      },
-      {
         "indexed": true,
         "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "recipient",
+        "name": "subscriber",
         "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "amountPerPeriod",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "periodInSeconds",
+        "name": "targetTimestamp",
         "type": "uint256"
       }
     ],
-    "name": "SubscriptionCreated",
+    "name": "TargetChargeTimeUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
     "type": "event"
   },
   {
@@ -137,7 +528,7 @@
       {
         "indexed": true,
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
         "type": "uint256"
       },
       {
@@ -157,11 +548,81 @@
     "type": "event"
   },
   {
+    "inputs": [],
+    "name": "MAX_AMOUNT_PER_PERIOD",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_PERIOD_SECONDS",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_SERVICE_ID_LENGTH",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MIN_PERIOD_SECONDS",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "USDC_DECIMALS",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
       }
     ],
     "name": "canCharge",
@@ -179,7 +640,20 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "cancelOffering",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
         "type": "uint256"
       }
     ],
@@ -192,12 +666,41 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
       }
     ],
     "name": "charge",
     "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "chargeAll",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "successCount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "failCount",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -224,11 +727,11 @@
         "type": "uint256"
       }
     ],
-    "name": "createSubscription",
+    "name": "createOffering",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "id",
+        "name": "offeringId",
         "type": "uint256"
       }
     ],
@@ -239,19 +742,33 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
         "type": "uint256"
       }
     ],
-    "name": "getSubscription",
+    "name": "getChargableSubscribers",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getOffering",
     "outputs": [
       {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "id",
-            "type": "uint256"
-          },
           {
             "internalType": "string",
             "name": "serviceId",
@@ -279,13 +796,8 @@
           },
           {
             "internalType": "uint256",
-            "name": "lastChargeTime",
+            "name": "createdAt",
             "type": "uint256"
-          },
-          {
-            "internalType": "address",
-            "name": "subscriber",
-            "type": "address"
           },
           {
             "internalType": "bool",
@@ -294,13 +806,51 @@
           },
           {
             "internalType": "uint256",
-            "name": "createdAt",
+            "name": "totalSubscribers",
             "type": "uint256"
           }
         ],
-        "internalType": "struct AgentSubscriptions.Subscription",
+        "internalType": "struct AgentSubscriptionsV2.SubscriptionOffering",
         "name": "",
         "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getOfferingSubscriberCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getOfferingSubscribers",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
       }
     ],
     "stateMutability": "view",
@@ -314,7 +864,7 @@
         "type": "address"
       }
     ],
-    "name": "getUserSubscriptions",
+    "name": "getUserOfferingIds",
     "outputs": [
       {
         "internalType": "uint256[]",
@@ -329,18 +879,71 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
       }
     ],
-    "name": "subscribe",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "getUserSubscription",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "offeringId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "subscriber",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "startTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lastChargeTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalPaid",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chargeCount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "targetChargeTime",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct AgentSubscriptionsV2.UserSubscription",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "subscriptionCount",
+    "name": "offeringCount",
     "outputs": [
       {
         "internalType": "uint256",
@@ -359,13 +962,8 @@
         "type": "uint256"
       }
     ],
-    "name": "subscriptions",
+    "name": "offerings",
     "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
       {
         "internalType": "string",
         "name": "serviceId",
@@ -393,13 +991,8 @@
       },
       {
         "internalType": "uint256",
-        "name": "lastChargeTime",
+        "name": "createdAt",
         "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "subscriber",
-        "type": "address"
       },
       {
         "internalType": "bool",
@@ -408,7 +1001,173 @@
       },
       {
         "internalType": "uint256",
-        "name": "createdAt",
+        "name": "totalSubscribers",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "pauseOffering",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "dayOfMonth",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint8",
+        "name": "hourUTC",
+        "type": "uint8"
+      }
+    ],
+    "name": "setMonthlySchedule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "targetTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "setTargetChargeTime",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "subscribe",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "subscriptions",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "startTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lastChargeTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalPaid",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "chargeCount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "targetChargeTime",
         "type": "uint256"
       }
     ],
@@ -419,8 +1178,13 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "subscriptionId",
+        "name": "offeringId",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
       }
     ],
     "name": "timeUntilNextCharge",
@@ -435,6 +1199,39 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unpause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "offeringId",
+        "type": "uint256"
+      }
+    ],
+    "name": "unpauseOffering",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "usdc",
     "outputs": [
@@ -442,30 +1239,6 @@
         "internalType": "contract IERC20",
         "name": "",
         "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "userSubscriptions",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",

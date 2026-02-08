@@ -2,7 +2,8 @@
   "network": "arcTestnet",
   "chainId": 5042002,
   "rpcUrl": "https://testnet-rpc.arc.network",
-  "contractAddress": "0xe3740beE2F2F3a45C72380722643D152a3dF4A07",
+  "contractAddress": "0x627dB2416B321C7003a3C2E72D091A4f919E88F8",
   "usdcAddress": "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d",
-  "explorerUrl": "https://testnet.arcscan.app"
+  "explorerUrl": "https://testnet.arcscan.app",
+  "version": "2.0.0"
 }
